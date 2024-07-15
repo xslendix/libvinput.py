@@ -9,6 +9,9 @@ vinput = cutil.find_library('vinput')
 if vinput == None:
     # Try and find it manually
     files = [
+        './libvinput.so',
+        './libvinput.dll',
+        './libvinput.dylib',
         'libvinput.so',
         'libvinput.dll',
         'libvinput.dylib',
@@ -25,6 +28,9 @@ if vinput == None:
             if vinput != None:
                 break
         except: pass
+
+if isinstance(vinput, str):
+    vinput = CDLL(vinput)
 
 if vinput == None:
     raise VInputException("Failed to find libvinput library")
