@@ -1,0 +1,22 @@
+[build-system]
+requires = ['setuptools>=42', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'vinput'
+version = '0.1.0'
+description = 'Python bindings for the libvinput library'
+readme = 'README.md'
+
+license = { text = 'AGPLv3' }
+authors = [
+	{ name = 'Slendi', email = 'slendi@socopon.com' }
+]
+dependencies = []
+
+[project.urls]
+Homepage = 'https://github.com/xslendix/libvinput.py'
+
+[tool.setuptools]
+packages = ['vinput']
+
