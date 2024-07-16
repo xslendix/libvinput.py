@@ -1,6 +1,6 @@
 include README.md
 include LICENSE
-include vinput/lib/libvinput.so
-include vinput/lib/libvinput.dll
-include vinput/lib/libvinput.dylib
+include vinput/lib/libvinput.so.dat
+include vinput/lib/libvinput.dll.dat
+include vinput/lib/libvinput.dylib.dat
 
