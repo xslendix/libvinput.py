@@ -15,7 +15,7 @@ for file in files:
     url = base_url + file
     response = requests.get(url)
     if response.status_code == 200:
-        file_path = os.path.join(save_dir, file)
+        file_path = os.path.join(save_dir, file) + '.dat'
         with open(file_path, 'wb') as f:
             f.write(response.content)
         print(f'Downloaded {file} successfully.')

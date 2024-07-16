@@ -20,11 +20,11 @@ elif sys.platform.startswith("darwin"):
 try:
     dll = ''
     if os_name == 'notwin':
-        dll = 'libvinput.so'
+        dll = 'libvinput.so.dat'
     elif os_name == 'win':
-        dll = 'libvinput.dll'
+        dll = 'libvinput.dll.dat'
     else:
-        dll = 'libvinput.dylib'
+        dll = 'libvinput.dylib.dat'
 
     path = dir_path + '/lib/' + dll
     vinput = CDLL(path)
