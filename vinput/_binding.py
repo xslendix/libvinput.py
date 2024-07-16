@@ -26,8 +26,8 @@ try:
     else:
         dll = 'libvinput.dylib'
 
-    vinput = CDLL(dir_path + '/' + dll)
-    print('Loaded from library')
+    path = dir_path + '/lib/' + dll
+    vinput = CDLL(path)
 except: pass
 
 if vinput == None:
