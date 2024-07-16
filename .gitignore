@@ -1,3 +1,4 @@
 dist
+vinput/__pycache__
 vinput.egg-info
 build

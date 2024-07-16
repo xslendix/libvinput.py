@@ -1,36 +1,61 @@
 from ctypes import *
-import ctypes.util as cutil
-
 from typing import Callable
+
+import ctypes.util as cutil
+import os 
+import sys
 
 class VInputException(Exception): pass
 
-vinput = cutil.find_library('vinput')
-if vinput == None:
-    # Try and find it manually
-    files = [
-        './libvinput.so',
-        './libvinput.dll',
-        './libvinput.dylib',
-        'libvinput.so',
-        'libvinput.dll',
-        'libvinput.dylib',
-        '/usr/local/lib/libvinput.so',
-        '/usr/lib/libvinput.so',
-        '/usr/local/lib64/libvinput.so',
-        '/usr/lib64/libvinput.so',
-        '/usr/local/lib/libvinput.dylib',
-        '/usr/local/lib64/libvinput.dylib',
-    ]
-    for file in files:
-        try:
-            vinput = CDLL(file)
-            if vinput != None:
-                break
-        except: pass
+vinput = None
 
-if isinstance(vinput, str):
-    vinput = CDLL(vinput)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+os_name = "notwin"
+if sys.platform.startswith("win"):
+    os_name = "win"
+elif sys.platform.startswith("darwin"):
+    os_name = "darwin"
+
+try:
+    dll = ''
+    if os_name == 'notwin':
+        dll = 'libvinput.so'
+    elif os_name == 'win':
+        dll = 'libvinput.dll'
+    else:
+        dll = 'libvinput.dylib'
+
+    vinput = CDLL(dir_path + '/' + dll)
+    print('Loaded from library')
+except: pass
+
+if vinput == None:
+    vinput = cutil.find_library('vinput')
+    if vinput == None:
+        # Try and find it manually
+        files = [
+            './libvinput.so',
+            './libvinput.dll',
+            './libvinput.dylib',
+            'libvinput.so',
+            'libvinput.dll',
+            'libvinput.dylib',
+            '/usr/local/lib/libvinput.so',
+            '/usr/lib/libvinput.so',
+            '/usr/local/lib64/libvinput.so',
+            '/usr/lib64/libvinput.so',
+            '/usr/local/lib/libvinput.dylib',
+            '/usr/local/lib64/libvinput.dylib',
+        ]
+        for file in files:
+            try:
+                vinput = CDLL(file)
+                if vinput != None:
+                    break
+            except: pass
+    if isinstance(vinput, str):
+        vinput = CDLL(vinput)
 
 if vinput == None:
     raise VInputException("Failed to find libvinput library")

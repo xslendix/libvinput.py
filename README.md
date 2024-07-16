@@ -7,11 +7,7 @@ You can install the bindings this way:
 $ python3 -m pip install vinput
 ```
 
-You do need to get the latest shared library and place it in your current
-working directory in order for the binding to be installed, alternatively, you
-can install the library system wide. See the
-[releases](https://github.com/xslendix/libvinput/releases/) page for the latest
-binaries or build them yourself.
+Please note on Linux, you need libxdo installed.
 
 ## Example
 
