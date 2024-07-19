@@ -27,7 +27,6 @@ try:
         dll = 'libvinput.dylib.dat'
 
     path = dir_path + '/lib/' + dll
-    print('finalpath', path)
     vinput = CDLL(path)
 except: pass
 
