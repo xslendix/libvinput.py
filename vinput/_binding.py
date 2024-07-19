@@ -26,13 +26,8 @@ try:
     else:
         dll = 'libvinput.dylib.dat'
 
-    path: str
-    try:
-        path = os.path.join(sys._MEIPASS,'vinput')
-    except:
-        path = dir_path
-
-    path = path + '/lib/' + dll
+    path = dir_path + '/lib/' + dll
+    print('finalpath', path)
     vinput = CDLL(path)
 except: pass
 
