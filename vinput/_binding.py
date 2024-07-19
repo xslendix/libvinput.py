@@ -60,6 +60,11 @@ if vinput == None:
 if vinput == None:
     raise VInputException("Failed to find libvinput library")
 
+def version() -> (int, int, int):
+    v = vinput.Vinput_version()
+    v = int(v)
+    return (v & 0xff, (v & 0xff00) >> 8, (v & 0xff0000) >> 16)
+
 class _EventListener(Structure):
     _fields_ = [
         ('listen_keyboard', c_bool),

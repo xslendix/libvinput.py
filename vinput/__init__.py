@@ -8,5 +8,7 @@ from ._binding import (
 
     EventListener,
     EventEmulator,
+
+    version
 )
 
