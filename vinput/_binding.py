@@ -79,18 +79,18 @@ class _EventListener(Structure):
 
 class KeyboardModifiers(Structure):
     _fields_ = [
-        ('left_control', c_bool, 1),
-        ('right_control', c_bool, 1),
-        ('left_shift', c_bool, 1),
-        ('right_shift', c_bool, 1),
-        ('left_alt', c_bool, 1),    # On Mac, this is the Option key
-        ('right_alt', c_bool, 1),   # On Mac, this is the Option key
-        ('left_meta', c_bool, 1),   # On Mac, this is the Command key
-        ('right_meta', c_bool, 1),  # On Mac, this is the Command key
-        ('left_super', c_bool, 1),  # On Mac, this is the Fn key
-        ('right_super', c_bool, 1), # On Mac, this is the Fn key
-        ('left_hyper', c_bool, 1),
-        ('right_hyper', c_bool, 1),
+        ('left_control', c_ubyte, 1),
+        ('right_control', c_ubyte, 1),
+        ('left_shift', c_ubyte, 1),
+        ('right_shift', c_ubyte, 1),
+        ('left_alt', c_ubyte, 1),    # On Mac, this is the Option key
+        ('right_alt', c_ubyte, 1),   # On Mac, this is the Option key
+        ('left_meta', c_ubyte, 1),   # On Mac, this is the Command key
+        ('right_meta', c_ubyte, 1),  # On Mac, this is the Command key
+        ('left_super', c_ubyte, 1),  # On Mac, this is the Fn key
+        ('right_super', c_ubyte, 1), # On Mac, this is the Fn key
+        ('left_hyper', c_ubyte, 1),
+        ('right_hyper', c_ubyte, 1),
     ]
 
     def __str__(self):
