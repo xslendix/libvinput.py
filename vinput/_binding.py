@@ -26,7 +26,7 @@ try:
     else:
         dll = 'libvinput.dylib.dat'
 
-    path = dir_path + '/lib/' + dll
+    path = os.path.join(dir_path, 'lib', dll)
     vinput = CDLL(path)
 except: pass
 
@@ -191,23 +191,29 @@ class EventEmulator:
         if err != 0:
             raise VInputException(vinput.VInput_error_get_message(err))
 
+    def keyboard_state_set(self, state: list[int]):
+        array_type = c_int * len(state)
+        err = vinput.EventEmulator_keyboard_state_set(self._emulator, array_type(*state), len(state))
+        if err != 0:
+            raise VInputException(vinput.VInput_error_get_message(err))
+
     def keyboard_press(self, keysym: int):
-        err = vinput.EventEmulator_keyboard_press(self._emulator, c_uint16(keysym))
+        err = vinput.EventEmulator_press(self._emulator, c_uint16(keysym))
         if err != 0:
             raise VInputException(vinput.VInput_error_get_message(err))
 
     def keyboard_release(self, keysym: int):
-        err = vinput.EventEmulator_keyboard_release(self._emulator, c_uint16(keysym))
+        err = vinput.EventEmulator_release(self._emulator, c_uint16(keysym))
         if err != 0:
             raise VInputException(vinput.VInput_error_get_message(err))
 
     def keyboard_typec(self, keychar: str):
-        err = vinput.EventEmulator_keyboard_typec(self._emulator, c_char(keychar))
+        err = vinput.EventEmulator_typec(self._emulator, c_char(keychar[0].encode('utf-8')))
         if err != 0:
             raise VInputException(vinput.VInput_error_get_message(err))
 
     def keyboard_types(self, text: str):
-        err = vinput.EventEmulator_keyboard_types(self._emulator, c_char_p(text), c_size_t(len(text)))
+        err = vinput.EventEmulator_types(self._emulator, c_char_p(text.encode('utf-8')), c_size_t(len(text)))
         if err != 0:
             raise VInputException(vinput.VInput_error_get_message(err))
 
