@@ -25,6 +25,12 @@ l = vinput.EventListener(True, True, True)
 l.start(print, print, print)
 ```
 
+Donating
+--------
+
+If you feel this library has been helpful, please consider supporting me by
+donating through my [Ko-Fi](https://ko-fi.com/slendi). Thank you!
+
 ## License
 
 This software is licensed under the AGPLv3 license, more info in the LICENSE
