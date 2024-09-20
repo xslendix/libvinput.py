@@ -180,6 +180,7 @@ class EventEmulator:
         err = vinput.EventEmulator_create(pointer(self._emulator))
         if err != 0:
             raise VInputException(vinput.VInput_error_get_message(err))
+        __import__('time').sleep(0.1)
 
     def __del__(self):
         err = vinput.EventEmulator_free(pointer(self._emulator))
