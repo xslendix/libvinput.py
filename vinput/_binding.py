@@ -61,7 +61,7 @@ if vinput == None:
     raise VInputException("Failed to find libvinput library")
 
 def version() -> (int, int, int):
-    v = vinput.Vinput_version()
+    v = vinput.VInput_version()
     v = int(v)
     return (v & 0xff, (v & 0xff00) >> 8, (v & 0xff0000) >> 16)
 
